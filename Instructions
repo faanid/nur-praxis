@@ -2,7 +2,10 @@ Redux Instructions
 
 --Install redux - npm install redux react-redux
 1. Create store - where all your would be stored
-2. Create a reducer and pass it as an argument to the store
+2. Create a reducer and pass it as an argument
+to the store
 3. Provide your store to the App.js component
 4. Use/access the store data from ay component
 5. Dispatch action from the respective component
+
+# 3. Connect the component to the store using connect() from react-redux library
