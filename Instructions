@@ -9,3 +9,10 @@ to the store
 5. Dispatch action from the respective component
 
 # 3. Connect the component to the store using connect() from react-redux library
+
+REDUX TOOLKIT INSTRUCTIONS
+
+--Install redux toolkit - npm install @reduxjs/toolkit
+1.combine reducer and actions into a slice
+2.replace createStore() with configureStore()
+3.Update useSelector() and useDispatch() on the component
