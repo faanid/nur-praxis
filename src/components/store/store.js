@@ -1,17 +1,13 @@
-import { createStore, combineReducers } from "redux";
-import countReducer from "./reducers/countReducer";
-import authReducer from "./reducers/authReducer";
-//Reducer
-
-const reducers = combineReducers({
-  count: countReducer,
-  isLoggedIn: authReducer,
-});
+import { configureStore } from "@reduxjs/toolkit";
+import countReducer from "./slice/counterSlice";
+import authReducer from "./slice/authSlice";
 
 //create a store
-const store = createStore(
-  reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const store = configureStore({
+  reducer: {
+    counter: countReducer,
+    auth: authReducer,
+  },
+});
 
 export default store;
