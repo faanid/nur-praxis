@@ -1,14 +1,16 @@
+import { ACTIONS } from "../actions/actionTypes";
+
 const countReducer = (state = 0, action) => {
-  if (action.type === "SUBTRACT") {
+  if (action.type === ACTIONS.SUBTRACT) {
     return state - 1;
   }
-  if (action.type === "ADD") {
+  if (action.type === ACTIONS.ADD) {
     return state + 1;
   }
-  if (action.type === "ADD_NUMBER") {
+  if (action.type === ACTIONS.ADD_NUMBER) {
     return state + action.payload;
   }
-  if (action.type === "RESET") {
+  if (action.type === ACTIONS.RESET) {
     return (state = 0);
   }
   return state;
