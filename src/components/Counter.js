@@ -1,6 +1,13 @@
 import "../App.css";
-import Button from "./Button/Button";
+import Button from "./button/Button";
 import { useSelector, useDispatch } from "react-redux";
+import {
+  handleSubtract,
+  handleAdd,
+  handleReset,
+  handleAddNumber,
+  toggleAuth,
+} from "../components/store/actions/action";
 
 const Counter = () => {
   const count = useSelector((state) => state.count);
@@ -8,30 +15,6 @@ const Counter = () => {
   //   console.log(count);
   //   console.log(isLoggedIn);
   const dispatch = useDispatch();
-
-  const handleSubtract = () => {
-    dispatch({
-      type: "SUBTRACT",
-    });
-  };
-  const handleReset = () => {
-    dispatch({ type: "RESET" });
-  };
-  const handleAdd = () => {
-    dispatch({ type: "ADD" });
-  };
-
-  const handleAddNumber = (amount) => {
-    dispatch({
-      type: "ADD_NUMBER",
-      payload: amount,
-    });
-  };
-  const toggleAuth = () => {
-    dispatch({
-      type: "TOGGLE_AUTH",
-    });
-  };
 
   let color = "#fff";
   if (count >= 1) {
@@ -45,7 +28,10 @@ const Counter = () => {
   return (
     <section className="counter-sec --flex-center">
       <div className="container counter --card --center-all ">
-        <button className="--btn --btn-danger" onClick={toggleAuth}>
+        <button
+          className="--btn --btn-danger"
+          onClick={() => dispatch(toggleAuth())}
+        >
           {isLoggedIn ? "Log Out" : "Log In"}
         </button>
         {!isLoggedIn ? (
@@ -64,26 +50,29 @@ const Counter = () => {
             - Subtract
           </button> */}
               <Button
-                onClick={handleSubtract}
+                onClick={() => dispatch(handleSubtract())}
                 btnClass={"--btn-danger"}
               >{`- Subtract`}</Button>
 
               {/* <button className="--btn" onClick={handleReset}>
             ! Reset
           </button> */}
-              <Button onClick={handleReset} btnClass={null}>{`! Reset`}</Button>
+              <Button
+                onClick={() => dispatch(handleReset())}
+                btnClass={null}
+              >{`! Reset`}</Button>
 
               {/* <button className="--btn --btn-success" onClick={handleAdd}>
             + Add
           </button> */}
               <Button
-                onClick={handleAdd}
+                onClick={() => dispatch(handleAdd())}
                 btnClass={"--btn-success"}
               >{`+ Add`}</Button>
               <Button
-                onClick={() => handleAddNumber(5)}
+                onClick={() => dispatch(handleAddNumber(5))}
                 btnClass={"--btn-success"}
-              >{`+ Add`}</Button>
+              >{`+5 Add`}</Button>
             </div>
           </>
         )}

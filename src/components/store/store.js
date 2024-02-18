@@ -1,25 +1,7 @@
 import { createStore, combineReducers } from "redux";
-
+import countReducer from "./reducers/countReducer";
+import authReducer from "./reducers/authReducer";
 //Reducer
-const countReducer = (state = 0, action) => {
-  if (action.type === "SUBTRACT") {
-    return state - 1;
-  }
-  if (action.type === "ADD") {
-    return state + 1;
-  }
-  if (action.type === "RESET") {
-    return (state = 0);
-  }
-  return state;
-};
-
-const authReducer = (state = true, action) => {
-  if (action.type === "TOGGLE_AUTH") {
-    return (state = !state);
-  }
-  return state;
-};
 
 const reducers = combineReducers({
   count: countReducer,
